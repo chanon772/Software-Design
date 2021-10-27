@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.model.Address;
+import com.example.demo.model.AddressRepository;
 import com.example.demo.model.Employee;
 import com.example.demo.model.EmployeeRepository;
 
@@ -21,6 +24,9 @@ import com.example.demo.model.EmployeeRepository;
 public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private AddressRepository addressRepository;
 	
 	@RequestMapping("/employee/all")
 	public String employeeForm(Model model) {
@@ -66,19 +72,24 @@ public class EmployeeController {
 	  }
 	  
 	  @PostMapping("/employee/add")
-	  public String addEmployee(@Validated Employee employee, BindingResult result, Model model) {
+	  public String addEmployee(@Validated Employee employee, @Validated Address address, BindingResult result, Model model) {
 	      if (result.hasErrors()) {
 	          return "employee/add";
 	      }
 	      
+	      addressRepository.save(address);
+	      employee.setAddress(address);
 	      employeeRepository.save(employee);
+	      
 	      return "redirect:/employee/all";
 	  }
 	  
 	  @GetMapping("/employee/add")
 	  public String showForm(Model model) {
 	      Employee employee = new Employee();
+	      Address address = new Address();
 	      model.addAttribute("employee", employee);
+	      model.addAttribute("address",address);
 	      
 	      return "employee/add";
 	  }
