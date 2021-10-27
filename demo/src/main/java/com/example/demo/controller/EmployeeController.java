@@ -29,6 +29,14 @@ public class EmployeeController {
 		  model.addAttribute("employees",employees);
 	    return "employee/all";
 	  }
+	
+	@GetMapping("/employee/delete/{id}")
+	  public String deleteEmployee(@PathVariable("id") long id, Model model) {
+	      Employee employee = employeeRepository.findById((int) id)
+	        .orElseThrow(() -> new IllegalArgumentException("Invalid employee Id:" + id));
+	      employeeRepository.delete(employee);
+	      return "redirect:/employee/all";
+	  }
 	 
 	  @PostMapping("/employee/update/{id}")
 	  public String updateEmployee(@PathVariable("id") Integer id, @Validated  Employee employee, 

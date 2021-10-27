@@ -29,6 +29,7 @@
                         <th scope="col">Role</th>
                         <th scope="col">Status</th>
                         <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,7 @@
                     <td  th:text="${employee.role}"></td>
                     <td  th:text="${employee.status}"></td>
                     <td ><a th:href="@{/employee/edit/{id}(id=${employee.id})}">Edit</a></td>
+                    <td><a th:href="@{/employee/delete/{id}(id=${employee.id})}">Delete</a></td>
                     
                 </tr>
             </tbody>

@@ -73,7 +73,7 @@
     <label for="role">Role</label>
     <input type="text" th:field="*{role}" id="role" placeholder="Role">
         <select th:field="*{role}" name="Role" class="form-select">
-            <option value="1" selected>Chef</option>
+            <option value="1">Chef</option>
             <option value="2">Manager</option>
             <option value="3">Accountant</option>
         </select>
@@ -83,12 +83,14 @@
     <label for="status">Status</label>
     <input type="text" th:field="*{status}" id="status" placeholder="Status">
       	<select th:field="*{status}" name="Status" class="form-select">
-            <option value="Active" selected>Active</option>
+            <option value="Active">Active</option>
             <option value="Pause">Pause</option>
             <option value="Resigned">Resigned</option>
         </select>
-   <!--<span th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></span> -->
+   <span th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></span> 
     <br>
+    
+    
     
     <input type="submit" value="Edit Employee">   
 </form>
