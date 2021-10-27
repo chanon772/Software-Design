@@ -45,15 +45,17 @@ public class EmployeeController {
 	  }
 	 
 	  @PostMapping("/employee/update/{id}")
-	  public String updateEmployee(@PathVariable("id") Integer id, @Validated  Employee employee, 
+	  public String updateEmployee(@PathVariable("id") Integer id, @Validated  Employee employee, @Validated Address address, 
 	    BindingResult result, Model model) {
 	     System.out.println(employee); 
 		 //System.out.println(employee.getId()+ employee.getFirstname());
 		if (result.hasErrors()) {
 	          employee.setId(id);
+	          address.setId(id);
 	          return "employee/edit";
 	      }
-	          
+	      
+		  employee.setAddress(address);
 	      employeeRepository.save(employee);
 	      return "redirect:/employee/all";
 	  }
@@ -62,7 +64,11 @@ public class EmployeeController {
 	      Employee employee = employeeRepository.findById(id)
 	        .orElseThrow(() -> new IllegalArgumentException("Invalid employee Id:" + id));
 	      
+	      Address address = addressRepository.findById(id)
+	  	        .orElseThrow(() -> new IllegalArgumentException("Invalid address Id:" + id));
+	      
 	      model.addAttribute("employee", employee);
+	      model.addAttribute("address", address);
 	      return "employee/edit";
 	  }
 	  
