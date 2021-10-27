@@ -28,7 +28,7 @@ public class EmployeeController {
 		 System.out.println(employee.getId()+ employee.getFirstname());
 		if (result.hasErrors()) {
 	          employee.setId(id);
-	          return "/employee/all";
+	          return "employee/all";
 	      }
 	          
 	      employeeRepository.save(employee);
@@ -40,7 +40,7 @@ public class EmployeeController {
 	        .orElseThrow(() -> new IllegalArgumentException("Invalid employee Id:" + id));
 	      
 	      model.addAttribute("employee", employee);
-	      return "/employee/edit";
+	      return "employee/edit";
 	  }
 	  
 	  @GetMapping(path="/all")
@@ -63,6 +63,6 @@ public class EmployeeController {
 	      Employee employee = new Employee();
 	      model.addAttribute("employee", employee);
 	      
-	      return "/employee/add";
+	      return "employee/add";
 	  }
 }
