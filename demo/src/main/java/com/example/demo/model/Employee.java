@@ -29,7 +29,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", ssn=" + ssn + ", firstname=" + firstName + ", middlename=" + middleName
-				+ ", lastname=" + lastName + ", sex=" + sex + ", birth_date=" + birthDate + ", phonenumber="
+				+ ", lastname=" + lastName + ", sex=" + sex + ", birthDate=" + birthDate + ", phonenumber="
 				+ phoneNumber + ", role=" + role + ", status=" + status + "]";
 	}
 
