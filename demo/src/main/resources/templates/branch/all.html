@@ -31,10 +31,10 @@
                 <tr scope="row", th:each="branch : ${branches}">
                 
                 	<td   th:text="${branch.id}"></td>
-                    <td   th:text="${branch.name}"></td>
+                    <td   ><a th:text="${branch.name}" th:href="@{/branch/detail/{id}(id=${branch.id})}" ></a></td>
                     <td   th:text="${branch.phoneNumber}"></td>
                     <td   th:text="${branch.email}"></td>
-                    
+                     
                     <td><a th:href="@{/branch/edit/{id}(id=${branch.id})}">  <button class="btn btn-info text-white" type="submit">Edit</button></a></td>
                     <td><a th:href="@{/branch/delete/{id}(id=${branch.id})}"><button class="btn btn-danger" type="submit">Delete</button></a></td>
                 </tr>
