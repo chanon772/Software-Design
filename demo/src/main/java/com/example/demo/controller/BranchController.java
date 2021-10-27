@@ -76,9 +76,10 @@ public class BranchController {
 	      if (result.hasErrors()) {
 	          return "branch/add";
 	      }
-	
-	      addressRepository.save(address);
+	      
 	      branch.setAddress(address);
+//	      addressRepository.save(address);
+	     
 	      branchRepository.save(branch);
 	      
 	      
