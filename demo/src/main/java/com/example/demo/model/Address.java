@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ public class Address {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(columnDefinition = "MEDIUMINT NOT NULL AUTO_INCREMENT")
 	private int	id;
 	
 	private String	houseNo;
@@ -21,8 +23,6 @@ public class Address {
 	private String	subDistrict;
 	private String	province;
 	private String	postalCode;
-	
-	
 	
 	public Address(String houseNo, String streeet, String alley, String villageNo, String subDistrict, String province,
 			String postalCode) {

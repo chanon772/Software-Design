@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ public class Branch {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(columnDefinition = "MEDIUMINT NOT NULL AUTO_INCREMENT")
 	private int id;	
 	private String name;
 	private String phonenumber;
