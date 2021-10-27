@@ -35,13 +35,13 @@ public class BranchController {
 	    		  .orElseThrow(() -> new IllegalArgumentException("Invalid branch Id:" + id));
 	      
 	      model.addAttribute("branch", branch);
-	      return "/branch/edit";
+	      return "branch/edit";
 	  }
 	
 	@PostMapping("/branch/add")
 	  public String addBranch(@Validated Branch branch, BindingResult result, Model model) {
 	      if (result.hasErrors()) {
-	          return "/branch/add";
+	          return "branch/add";
 	      }
 	      
 	      branchRepository.save(branch);
@@ -53,7 +53,7 @@ public class BranchController {
 		 Branch branch = new Branch();
 	      model.addAttribute("emp", branch);
 	      
-	      return "/branch/add";
+	      return "branch/add";
 	  }
 	
 }
