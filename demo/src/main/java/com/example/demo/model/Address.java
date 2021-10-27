@@ -14,7 +14,7 @@ public class Address {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(columnDefinition = "MEDIUMINT NOT NULL AUTO_INCREMENT")
+//	@Column(columnDefinition = "MEDIUMINT NOT NULL AUTO_INCREMENT")
 	private int	id;
 	
 	private String	houseNo;
@@ -99,12 +99,12 @@ public class Address {
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
-	public Employee getEmployee() {
-		return employee;
-	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
+//	public Employee getEmployee() {
+//		return employee;
+//	}
+//	public void setEmployee(Employee employee) {
+//		this.employee = employee;
+//	}
 	public Branch getBranch() {
 		return branch;
 	}

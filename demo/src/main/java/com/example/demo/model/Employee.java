@@ -17,7 +17,7 @@ public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(columnDefinition = "MEDIUMINT NOT NULL AUTO_INCREMENT")
+//	@Column(columnDefinition = "MEDIUMINT NOT NULL AUTO_INCREMENT")
 	 private Integer id;
 	 private String ssn;
 	 private String firstName;

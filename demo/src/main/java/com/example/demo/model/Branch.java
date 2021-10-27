@@ -17,7 +17,7 @@ public class Branch {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(columnDefinition = "MEDIUMINT NOT NULL AUTO_INCREMENT")
+//	@Column(columnDefinition = "MEDIUMINT NOT NULL AUTO_INCREMENT")
 	private int id;	
 	private String name;
 	private String phoneNumber;
