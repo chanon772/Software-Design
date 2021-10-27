@@ -77,7 +77,6 @@ public class EmployeeController {
 	          return "employee/add";
 	      }
 	      
-	      addressRepository.save(address);
 	      employee.setAddress(address);
 	      employeeRepository.save(employee);
 	      
