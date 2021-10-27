@@ -1,10 +1,14 @@
 package com.example.demo.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +29,20 @@ public class Employee {
 	 private Integer role;
 	 private String status;
 	 
+	 @OneToOne(cascade = CascadeType.ALL)
+	 @JoinTable(name = "employee_address",
+	 joinColumns  = {@JoinColumn(name="employee_id", referencedColumnName="id")},
+	 inverseJoinColumns = 
+	     {@JoinColumn(name = "address_id", referencedColumnName = "id") })
+	 private Address address;
+	 public Address getAddress() {
+		return address;
+	 }
+	 public void setAddress(Address address) {
+		this.address = address;
+	 }
+	 
+			
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", ssn=" + ssn + ", firstName=" + firstName + ", middleName=" + middleName
