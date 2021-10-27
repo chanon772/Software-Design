@@ -41,7 +41,7 @@ public class EmployeeController {
 	  @PostMapping("/employee/update/{id}")
 	  public String updateEmployee(@PathVariable("id") Integer id, @Validated  Employee employee, 
 	    BindingResult result, Model model) {
-	     System.out.println(id); 
+	     System.out.println(employee); 
 		 //System.out.println(employee.getId()+ employee.getFirstname());
 		if (result.hasErrors()) {
 	          employee.setId(id);
