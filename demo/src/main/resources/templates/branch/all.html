@@ -22,11 +22,15 @@
                         <th scope="col">Branch name</th>
                         <th scope="col">Phone number</th>
                         <th scope="col">Email</th>
-                        
+                        <th scope="col">Edit</th>
+                        <th scope="col">Update</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                <tr scope="row", th:each="branch : ${branch}">
+                <tr scope="row", th:each="branch : ${branches}">
+                
+                	<td   th:text="${branch.id}"></td>
                     <td   th:text="${branch.name}"></td>
                     <td   th:text="${branch.phoneNumber}"></td>
                     <td   th:text="${branch.email}"></td>
