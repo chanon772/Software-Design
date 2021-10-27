@@ -18,7 +18,7 @@ public class Address {
 	private int	id;
 	
 	private String	houseNo;
-	private String	streeet;
+	private String	street;
 	private String	alley;
 	private String	villageNo;
 	private String	subDistrict;
