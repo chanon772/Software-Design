@@ -24,6 +24,7 @@ public class Address {
 	private String	province;
 	private String	postalCode;
 	
+	public Address() {};
 	public Address(String houseNo, String streeet, String alley, String villageNo, String subDistrict, String province,
 			String postalCode) {
 		super();
@@ -35,6 +36,16 @@ public class Address {
 		this.province = province;
 		this.postalCode = postalCode;
 	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", houseNo=" + houseNo + ", streeet=" + streeet + ", alley=" + alley
+				+ ", villageNo=" + villageNo + ", subDistrict=" + subDistrict + ", province=" + province
+				+ ", postalCode=" + postalCode + "]";
+	}
+	
 	
 	public int getId() {
 		return id;

@@ -19,13 +19,21 @@ public class Branch {
 	private String phonenumber;
 	private String email;
 	
+	public Branch() {};
 	public Branch(String name, String phonenumber, String email) {
 		super();
 		this.name = name;
 		this.phonenumber = phonenumber;
 		this.email = email;
 	}
+	
+	
 
+	@Override
+	public String toString() {
+		return "Branch [id=" + id + ", name=" + name + ", phonenumber=" + phonenumber + ", email=" + email + "]";
+	}
+	
 	public int getId() {
 		return id;
 	}
