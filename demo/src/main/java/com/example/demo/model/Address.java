@@ -28,20 +28,15 @@ public class Address {
 	@OneToOne(mappedBy = "address")
     private Employee employee;
 	
-	
-	public Employee getEmployee() {
-		return employee;
-	}
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
+	@OneToOne(mappedBy = "address")
+    private Branch branch;
 	
 	public Address() {};
-	public Address(String houseNo, String streeet, String alley, String villageNo, String subDistrict, String province,
+	public Address(String houseNo, String street, String alley, String villageNo, String subDistrict, String province,
 			String postalCode) {
 		super();
 		this.houseNo = houseNo;
-		this.street = streeet;
+		this.street = street;
 		this.alley = alley;
 		this.villageNo = villageNo;
 		this.subDistrict = subDistrict;
@@ -49,8 +44,6 @@ public class Address {
 		this.postalCode = postalCode;
 	}
 	
-	@OneToOne(mappedBy = "address")
-    private Branch branch;
 	
 	@Override
 	public String toString() {
@@ -58,8 +51,6 @@ public class Address {
 				+ ", villageNo=" + villageNo + ", subDistrict=" + subDistrict + ", province=" + province
 				+ ", postalCode=" + postalCode + "]";
 	}
-	
-	
 	public int getId() {
 		return id;
 	}
@@ -72,11 +63,11 @@ public class Address {
 	public void setHouseNo(String houseNo) {
 		this.houseNo = houseNo;
 	}
-	public String getStreeet() {
+	public String getStreet() {
 		return street;
 	}
-	public void setStreeet(String streeet) {
-		this.street = streeet;
+	public void setStreet(String street) {
+		this.street = street;
 	}
 	public String getAlley() {
 		return alley;
@@ -108,7 +99,18 @@ public class Address {
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
-	
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+	public Branch getBranch() {
+		return branch;
+	}
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
 	
 	
 	

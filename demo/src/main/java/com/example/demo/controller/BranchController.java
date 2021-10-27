@@ -65,6 +65,7 @@ public class BranchController {
 	      Branch branch = branchRepository.findById(id)
 	    		  .orElseThrow(() -> new IllegalArgumentException("Invalid branch Id:" + id));
 	      
+	      
 	      model.addAttribute("branch", branch);
 	      return "branch/edit";
 	  }
@@ -76,9 +77,11 @@ public class BranchController {
 	          return "branch/add";
 	      }
 	
-	      
-	      branchRepository.save(branch);
 	      addressRepository.save(address);
+	      branch.setAddress(address);
+	      branchRepository.save(branch);
+	      
+	      
 	      return "redirect:/branch/all";
 	  }
 	
