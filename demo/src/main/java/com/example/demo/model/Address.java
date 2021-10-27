@@ -41,7 +41,7 @@ public class Address {
 			String postalCode) {
 		super();
 		this.houseNo = houseNo;
-		this.streeet = streeet;
+		this.street = streeet;
 		this.alley = alley;
 		this.villageNo = villageNo;
 		this.subDistrict = subDistrict;
@@ -54,7 +54,7 @@ public class Address {
 	
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", houseNo=" + houseNo + ", streeet=" + streeet + ", alley=" + alley
+		return "Address [id=" + id + ", houseNo=" + houseNo + ", street=" + street + ", alley=" + alley
 				+ ", villageNo=" + villageNo + ", subDistrict=" + subDistrict + ", province=" + province
 				+ ", postalCode=" + postalCode + "]";
 	}
@@ -73,10 +73,10 @@ public class Address {
 		this.houseNo = houseNo;
 	}
 	public String getStreeet() {
-		return streeet;
+		return street;
 	}
 	public void setStreeet(String streeet) {
-		this.streeet = streeet;
+		this.street = streeet;
 	}
 	public String getAlley() {
 		return alley;
