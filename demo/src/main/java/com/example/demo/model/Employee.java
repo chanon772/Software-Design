@@ -25,19 +25,16 @@ public class Employee {
 	 private Integer role;
 	 private String status;
 	 
-	
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", ssn=" + ssn + ", firstname=" + firstName + ", middlename=" + middleName
-				+ ", lastname=" + lastName + ", sex=" + sex + ", birthDate=" + birthDate + ", phonenumber="
+		return "Employee [id=" + id + ", ssn=" + ssn + ", firstName=" + firstName + ", middleName=" + middleName
+				+ ", lastName=" + lastName + ", sex=" + sex + ", birthDate=" + birthDate + ", phoneNumber="
 				+ phoneNumber + ", role=" + role + ", status=" + status + "]";
 	}
 
 	public Employee() {
 		super();
 	}
-
-	
 
 	public Employee(Integer id, String ssn, String firstName, String middleName, String lastName, String sex,
 			String birthDate, String phoneNumber, Integer role, String status) {
@@ -70,11 +67,11 @@ public class Employee {
 		this.ssn = ssn;
 	}
 
-	public String getFirstname() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirstname(String firstName) {
+	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
@@ -86,11 +83,11 @@ public class Employee {
 		this.middleName = middleName;
 	}
 
-	public String getLastname() {
+	public String getLastName() {
 		return lastName;
 	}
 
-	public void setLastname(String lastName) {
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
@@ -110,11 +107,11 @@ public class Employee {
 		this.birthDate = birthDate;
 	}
 
-	public String getPhonenumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhonenumber(String phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -133,8 +130,9 @@ public class Employee {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	 
 	
-	
+	 
 	
 	
 	

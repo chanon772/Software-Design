@@ -32,7 +32,7 @@
 
 
 <form action="#" 
-  th:action="@{/update/{id}(id=${employee.id})}" 
+  th:action="@{/employee/update/{id}(id=${employee.id})}" 
   th:object="${employee}" 
   method="post">
   	<label for="ssn">SSN</label>
@@ -73,9 +73,9 @@
     <label for="role">Role</label>
     <input type="text" th:field="*{role}" id="role" placeholder="Role">
         <select th:field="*{role}" name="Role" class="form-select">
-            <option value="Chef" selected>Chef</option>
-            <option value="Manager">Manager</option>
-            <option value="Accountant">Accountant</option>
+            <option value="1" selected>Chef</option>
+            <option value="2">Manager</option>
+            <option value="3">Accountant</option>
         </select>
      <span th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></span>
     <br>
@@ -87,7 +87,7 @@
             <option value="Pause">Pause</option>
             <option value="Resigned">Resigned</option>
         </select>
-    <span th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></span>
+   <!--<span th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></span> -->
     <br>
     
     <input type="submit" value="Edit Employee">   

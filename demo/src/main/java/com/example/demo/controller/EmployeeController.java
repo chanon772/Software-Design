@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.model.Employee;
@@ -19,20 +21,27 @@ import com.example.demo.model.EmployeeRepository;
 public class EmployeeController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
-
+	
+	@RequestMapping("/employee/all")
+	public String employeeForm(Model model) {
+		   
+		  List<Employee> employees = (List<Employee>) employeeRepository.findAll();
+		  model.addAttribute("employees",employees);
+	    return "employee/all";
+	  }
 	 
-	  @PostMapping("/employee/all/{id}")
+	  @PostMapping("/employee/update/{id}")
 	  public String updateEmployee(@PathVariable("id") Integer id, @Validated  Employee employee, 
 	    BindingResult result, Model model) {
 	     System.out.println(id); 
-		 System.out.println(employee.getId()+ employee.getFirstname());
+		 //System.out.println(employee.getId()+ employee.getFirstname());
 		if (result.hasErrors()) {
 	          employee.setId(id);
-	          return "employee/all";
+	          return "employee/edit";
 	      }
 	          
 	      employeeRepository.save(employee);
-	      return "redirect:/all";
+	      return "redirect:/employee/all";
 	  }
 	  @GetMapping("/employee/edit/{id}")
 	  public String showUpdateForm(@PathVariable("id") int id, Model model) {
@@ -51,11 +60,11 @@ public class EmployeeController {
 	  @PostMapping("/employee/add")
 	  public String addEmployee(@Validated Employee employee, BindingResult result, Model model) {
 	      if (result.hasErrors()) {
-	          return "add";
+	          return "employee/add";
 	      }
 	      
 	      employeeRepository.save(employee);
-	      return "redirect:/all";
+	      return "redirect:/employee/all";
 	  }
 	  
 	  @GetMapping("/employee/add")

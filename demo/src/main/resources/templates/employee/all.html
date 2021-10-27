@@ -42,7 +42,7 @@
                     <td  th:text="${employee.phoneNumber}"></td>
                     <td  th:text="${employee.role}"></td>
                     <td  th:text="${employee.status}"></td>
-                    <td ><a th:href="@{/edit/{id}(id=${employee.id})}">Edit</a></td>
+                    <td ><a th:href="@{/employee/edit/{id}(id=${employee.id})}">Edit</a></td>
                     
                 </tr>
             </tbody>
@@ -50,7 +50,7 @@
     </div>    
     </div>  
     </div>    
-    <p><a href="/add">Add a new employee</a></p>
+    <p><a href="/employee/add">Add a new employee</a></p>
  
 </body>
 </html>
