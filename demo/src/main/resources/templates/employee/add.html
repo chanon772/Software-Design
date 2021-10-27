@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>  
+<style type="text/css">
+    label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+        text-align: left;
+    }
+    input[type=text], input[type=password], select {
+        display: inline-block;
+        width: 200px;
+    }
+    input[type=radio] {
+        margin-left: 45px;
+    }
+    input[type=checkbox] {
+        margin-right: 190px;
+    }  
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+</style>
+<title> Add Employee </title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+  
+<body>
+<div align="center">
+    <h1>Add Employee</h1>
+   <form action="#" th:action="@{/add}" method="post", th:object="${employee}">
+   
+   	<label>SSN:</label>
+     <input type="text" th:field="*{ssn}" /><br>
+     
+    <label>First Name:</label>
+     <input type="text" th:field="*{firstName}" /><br>
+     
+    <label>Middle Name:</label>
+     <input type="text" th:field="*{middleName}" /><br>
+ 
+     <label>Last Name:</label>
+      <input type="text" th:field="*{lastName}" /><br>
+      
+     <label>Sex (Male/Female/Other):</label>
+      <input type="text" th:field="*{sex}" /><br>
+      
+     <label>Birth Date (DD/MM/YYYY):</label>
+      <input type="text" th:field="*{birth_date}" /><br>
+      
+      <label>Phone Number:</label>
+      <input type="text" th:field="*{phoneNumber}" /><br>
+      
+     <label>Role:</label>
+        <select th:field="*{role}" name="Role" class="form-select">
+            <option value="Chef" selected>Chef</option>
+            <option value="Manager">Manager</option>
+            <option value="Accountant">Accountant</option>
+        </select>
+      
+      <label>Status:</label>
+      	<select th:field="*{status}" name="Status" class="form-select">
+            <option value="Active" selected>Active</option>
+            <option value="Pause">Pause</option>
+            <option value="Resigned">Resigned</option>
+            
+        </select>
+        <br>
+       
+      <button type="submit">Confirm add employee</button>    
+   </form> 
+   
+   
+   </body>
+</html>
+

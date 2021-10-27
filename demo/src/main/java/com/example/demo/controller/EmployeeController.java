@@ -21,7 +21,7 @@ public class EmployeeController {
 	private EmployeeRepository employeeRepository;
 
 	 
-	  @PostMapping("/employee/update/{id}")
+	  @PostMapping("/employee/all/{id}")
 	  public String updateEmployee(@PathVariable("id") Integer id, @Validated  Employee employee, 
 	    BindingResult result, Model model) {
 	     System.out.println(id); 

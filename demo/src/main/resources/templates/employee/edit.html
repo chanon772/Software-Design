@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>  
+<style type="text/css">
+    label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+        text-align: left;
+    }
+    input[type=text], input[type=password], select {
+        display: inline-block;
+        width: 200px;
+    }
+    input[type=radio] {
+        margin-left: 45px;
+    }
+    input[type=checkbox] {
+        margin-right: 190px;
+    }  
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+</style>
+<title> Add Employee </title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+ 
+<body>
+
+
+<form action="#" 
+  th:action="@{/update/{id}(id=${employee.id})}" 
+  th:object="${employee}" 
+  method="post">
+  	<label for="ssn">SSN</label>
+    <input type="text" th:field="*{ssn}" id="ssn" placeholder="SSN">
+    <span th:if="${#fields.hasErrors('ssn')}" th:errors="*{ssn}"></span>
+    <br>
+    
+    <label for="firstName">First Name</label>
+    <input type="text" th:field="*{firstName}" id="firstName" placeholder="First Name">
+    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+    <br>
+    
+    <label for="middleName">Middle Name</label>
+    <input type="text" th:field="*{middleName}" id="middleName" placeholder="Middle Name">
+    <span th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}"></span>
+    <br>
+    
+    <label for="lastName">Last Name</label>
+    <input type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name">
+    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+    <br>
+    
+    <label for="sex">Sex</label>
+    <input type="text" th:field="*{sex}" id="sex" placeholder="Sex">
+    <span th:if="${#fields.hasErrors('sex')}" th:errors="*{sex}"></span>
+    <br>
+    
+    <label for="birthDate">Birth Date</label>
+    <input type="text" th:field="*{birthDate}" id="birthDate" placeholder="Birth Date">
+    <span th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></span>
+    <br>
+    
+    <label for="phoneNumber">Phone Number</label>
+    <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="Phone Number">
+    <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+    <br>
+    
+    <label for="role">Role</label>
+    <input type="text" th:field="*{role}" id="role" placeholder="Role">
+        <select th:field="*{role}" name="Role" class="form-select">
+            <option value="Chef" selected>Chef</option>
+            <option value="Manager">Manager</option>
+            <option value="Accountant">Accountant</option>
+        </select>
+     <span th:if="${#fields.hasErrors('role')}" th:errors="*{role}"></span>
+    <br>
+    
+    <label for="status">Status</label>
+    <input type="text" th:field="*{status}" id="status" placeholder="Status">
+      	<select th:field="*{status}" name="Status" class="form-select">
+            <option value="Active" selected>Active</option>
+            <option value="Pause">Pause</option>
+            <option value="Resigned">Resigned</option>
+        </select>
+    <span th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></span>
+    <br>
+    
+    <input type="submit" value="Edit Employee">   
+</form>
+   
+   </body>
+</html>
