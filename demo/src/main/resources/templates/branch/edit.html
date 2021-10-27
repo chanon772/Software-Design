@@ -23,7 +23,7 @@
 	        margin: 10px;
 	    }
 	</style>
-	<title> Edit Employee </title> 
+	<title> Edit Branch </title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 	<script src="/assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
@@ -46,23 +46,59 @@
 	</div>
 	<form action="#" 
 	  th:action="@{/branch/update/{id}(id=${branch.id})}" 
-	  th:object="${branch}" 
+	   
 	  method="post">
-	  	
-	    <label class="label label-info" for="name">Branch name</label>
-	    <input class="form-control" type="text" th:field="*{name}" id="name" placeholder="Branch name">
-	    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+		
+		<label class="label label-info" for="first_name">Branch name</label>
+	    <input class="form-control" type="text" th:value="${branch.name}" name="name" id="branch.name" placeholder="Branch name">
+	    <span th:if="${#fields.hasErrors('branch.name')}" th:errors="*{branch.name}"></span>
 	    <br>
-
-	    <label for="phoneNumber">Last name</label>
-	    <input class="form-control" type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="phone number">
-	    <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+	    
+	    <label for="phoneNumber">Phone Number</label>
+	    <input class="form-control" type="text" th:value="${branch.phoneNumber}" name="phoneNumber" id="cus.phoneNumber" placeholder="phoneNumber">
+	    <span th:if="${#fields.hasErrors('branch.phoneNumber')}" th:errors="*{branch.phoneNumber}"></span>
 		<br>
-
-		 <label for="email">Email</label>
-	    <input class="form-control" type="text" th:field="*{email}" id="email" placeholder="Email">
-	    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+		
+		<label for="email">Email</label>
+	    <input class="form-control" type="text" th:value="${branch.phoneNumber}" name="branch.email" id="branch.email" placeholder="email">
+	    <span th:if="${#fields.hasErrors('branch.email')}" th:errors="*{branch.email}"></span>
 		<br>
+		
+		<label for="houseNo">houseNo</label>
+	    <input class="form-control" type="text" th:value="${branch.houseNo}" name="branch.email" id="branch.houseNo" placeholder="houseNo">
+	    <span th:if="${#fields.hasErrors('branch.houseNo')}" th:errors="*{branch.houseNo}"></span>
+		<br>
+		
+		<label for="street">street</label>
+	    <input class="form-control" type="text" th:value="${branch.street}" name="branch.street" id="branch.street" placeholder="street">
+	    <span th:if="${#fields.hasErrors('branch.street')}" th:errors="*{branch.street}"></span>
+		<br>
+		
+		<label for="alley">alley</label>
+	    <input class="form-control" type="text" th:value="${branch.alley}" name="branch.alley" id="branch.alley" placeholder="alley">
+	    <span th:if="${#fields.hasErrors('branch.alley')}" th:errors="*{branch.alley}"></span>
+		<br>
+		
+		<label for="villageNo">villageNo</label>
+	    <input class="form-control" type="text" th:value="${branch.villageNo}" name="branch.villageNo" id="branch.villageNo" placeholder="villageNo">
+	    <span th:if="${#fields.hasErrors('branch.villageNo')}" th:errors="*{branch.villageNo}"></span>
+		<br>
+		
+		<label for="subDistrict">subDistrict</label>
+	    <input class="form-control" type="text" th:value="${branch.subDistrict}" name="branch.subDistrict" id="branch.subDistrict" placeholder="subDistrict">
+	    <span th:if="${#fields.hasErrors('branch.subDistrict')}" th:errors="*{branch.subDistrict}"></span>
+		<br>
+		
+		<label for="province">province</label>
+	    <input class="form-control" type="text" th:value="${branch.province}" name="branch.province" id="branch.province" placeholder="province">
+	    <span th:if="${#fields.hasErrors('branch.province')}" th:errors="*{branch.province}"></span>
+		<br>
+		
+		<label for="postalCode">postalCode</label>
+	    <input class="form-control" type="text" th:value="${branch.postalCode}" name="branch.postalCode" id="branch.postalCode" placeholder="postalCode">
+	    <span th:if="${#fields.hasErrors('branch.postalCode')}" th:errors="*{branch.postalCode}"></span>
+		<br>
+		
 		
 	    <!-- <input type="submit" value="Update User"> -->
 		<button type="submit" class="btn btn-info text-white mt-2">Update Branch</button>
