@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.model.BranchRepository;
 
 import java.util.List;
+
+import com.example.demo.model.Address;
+import com.example.demo.model.AddressRepository;
 import com.example.demo.model.Branch;
 
 
@@ -22,6 +25,10 @@ public class BranchController {
 	
 	@Autowired
 	private BranchRepository branchRepository;
+	
+	@Autowired
+	private AddressRepository addressRepository;
+	
 	
 	@RequestMapping("/branch/all")
 	public String allBranches(Model model) {
@@ -63,19 +70,26 @@ public class BranchController {
 	  }
 	
 	@PostMapping("/branch/add")
-	  public String addBranch(@Validated Branch branch, BindingResult result, Model model) {
+	  public String addBranch(@Validated Branch branch, @Validated Address address, BindingResult result, Model model) {
+		
 	      if (result.hasErrors()) {
 	          return "branch/add";
 	      }
+	
 	      
 	      branchRepository.save(branch);
+	      addressRepository.save(address);
 	      return "redirect:/branch/all";
 	  }
 	
 	 @GetMapping("/branch/add")
 	  public String showBranchForm(Model model) {
-		 Branch branch = new Branch();
-	      model.addAttribute("branch", branch);
+		 Branch branch 	  = new Branch();
+		 Address address  = new Address();
+		 
+		 
+		 model.addAttribute("address",address);
+	     model.addAttribute("branch", branch);
 	      
 	      return "branch/add";
 	  }

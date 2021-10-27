@@ -1,10 +1,14 @@
 package com.example.demo.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +31,13 @@ public class Branch {
 		this.email = email;
 	}
 	
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinTable(name = "branch_address", 		
+	joinColumns  = {@JoinColumn(name="branch_id", referencedColumnName="id")},
+	 inverseJoinColumns = 
+ 	{ @JoinColumn(name = "address_id", referencedColumnName = "id") })
+	private Address address;
 	
 	
 	@Override

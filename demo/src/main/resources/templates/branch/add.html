@@ -39,19 +39,38 @@
                 <!--Grid row-->
                 <div class="row mt-5">
 				    <h1>Add a branch.</h1>
-				    <form action="#" th:action="@{/branch/add}" method="post", th:object="${branch}">
+				    <form action="#" th:action="@{/branch/add}" method="post">
 		
 		
 				        <label>Branch name:</label>
-				        <input type="text" th:field="*{name}" class="form-control"/><br>
-				      				   
-				      				   
-				       <label>phoneNumber:</label>
-				        <input type="text" th:field="*{phoneNumber}" class="form-control"/><br>
-				      
-				      	<label>Email:</label>
-				        <input type="text" th:field="*{email}" class="form-control"/><br>
+				        <input type="text" th:value="${branch.name}" name="name" class="form-control"/><br>
 				        
+				        <label>Phone number:</label>
+				        <input type="text" th:value="${branch.phoneNumber}" name="phoneNumber" class="form-control"/><br>
+				        
+				        <label>Email:</label>
+				        <input type="text" th:value="${branch.email}" name="email" class="form-control"/><br>
+				       
+				       	<label>House No.:</label>
+				        <input type="text" th:value="${address.houseNo}" name="houseNo" class="form-control"/><br>
+				        
+				        <label>Street:</label>
+				        <input type="text" th:value="${address.street}" name="street" class="form-control"/><br>
+				        
+				        <label>Alley:</label>
+				        <input type="text" th:value="${address.alley}" name="alley" class="form-control"/><br>
+				        
+				        <label>VillageNo:</label>
+				        <input type="text" th:value="${address.villageNo}" name="villageNo" class="form-control"/><br>
+				        
+				        <label>Sub-district:</label>
+				        <input type="text" th:value="${address.subDistrict}" name="subDistrict" class="form-control"/><br>
+				        
+				        <label>Province:</label>
+				        <input type="text" th:value="${address.province}" name="province" class="form-control"/><br>
+				        
+				        <label>Postal Code:</label>
+				        <input type="text" th:value="${address.postalCode}" name="postalCode" class="form-control"/><br>
 				       
 				        <button type="submit" class="btn btn-primary mt-2">Submit</button>    
 				    </form> 

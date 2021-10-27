@@ -49,7 +49,8 @@ public class Address {
 		this.postalCode = postalCode;
 	}
 	
-	
+	@OneToOne(mappedBy = "address")
+    private Branch branch;
 	
 	@Override
 	public String toString() {
