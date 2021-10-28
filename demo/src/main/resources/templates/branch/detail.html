@@ -103,6 +103,40 @@
 	    <!-- <input type="submit" value="Update User"> -->
 		<!--<button type="submit" class="btn btn-info text-white mt-2">Update Branch</button>-->
 	</form>
+	
+	
+	<div class="view">
+	   <div align="center">
+	      <h1> Employee Information</h1>
+	      <div class="container">
+	         <div class="row">
+	            <div class="col-lg-10 mt-5 mb-5">
+	               <table id="example" class="table table-bordered" style="width: 100%">
+	                  <!--- This is a comment !-->
+	                  <thead class="table-dark"  >
+	                     <tr>
+	                        <th scope="col">Employee Id</th>
+	                        <th scope="col">Employee name</th>
+	                        <th scope="col">Employee lastname</th>
+	                     </tr>
+	                  </thead>
+	                  <tbody>
+	                     <tr scope="row", th:each="employee : ${employees}">
+	                        <td   th:text="${employee.id}"></td>
+	                        <td   th:text="${employee.firstName}"></td>
+	                        <td   th:text="${employee.lastName}"></td>
+	                     </tr>
+	                  </tbody>
+	               </table>
+	            </div>
+	         </div>
+	      </div>
+	      <a href="/branch/add_employee"><button type="submit" class="btn btn-primary">Add new Employee</button></a>
+	   </div>
+	</div> 
+	
+	
+	
 	</div>
 	</div>
 	</div>

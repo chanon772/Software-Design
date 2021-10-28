@@ -3,11 +3,13 @@ package com.example.demo.model;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -35,14 +37,14 @@ public class Employee {
 	 inverseJoinColumns = 
 	     {@JoinColumn(name = "address_id", referencedColumnName = "id") })
 	 private Address address;
-	 public Address getAddress() {
-		return address;
-	 }
-	 public void setAddress(Address address) {
-		this.address = address;
-	 }
 	 
-			
+	 @ManyToOne(fetch = FetchType.LAZY)
+	 @JoinTable(name = "branch_employee",
+	 joinColumns  	= {@JoinColumn(name="employee_id", referencedColumnName="id")},
+	 inverseJoinColumns =  {@JoinColumn(name = "branch_id", referencedColumnName = "id") }
+	 )
+	private  Branch branch;
+	
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", ssn=" + ssn + ", firstName=" + firstName + ", middleName=" + middleName
@@ -68,68 +70,105 @@ public class Employee {
 		this.role = role;
 		this.status = status;
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getSsn() {
 		return ssn;
 	}
+
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getMiddleName() {
 		return middleName;
 	}
+
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getSex() {
 		return sex;
 	}
+
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
+
 	public String getBirthDate() {
 		return birthDate;
 	}
+
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
+
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
+
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
 	public Integer getRole() {
 		return role;
 	}
+
 	public void setRole(Integer role) {
 		this.role = role;
 	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Branch getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
 	
+	
+		 
 	
 
 	

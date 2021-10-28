@@ -1,13 +1,15 @@
 package com.example.demo.model;
-
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -39,6 +41,11 @@ public class Branch {
  	{ @JoinColumn(name = "address_id", referencedColumnName = "id") })
 	private Address address;
 	
+	@OneToMany(mappedBy = "branch",
+            orphanRemoval = true,
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+	private List<Employee> employees;
 	
 	@Override
 	public String toString() {
@@ -74,7 +81,12 @@ public class Branch {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-
-
+	public List<Employee> getEmployees() {
+		return employees;
+	}
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
+	
 	
 }
