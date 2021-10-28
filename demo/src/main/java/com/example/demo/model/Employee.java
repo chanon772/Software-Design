@@ -68,85 +68,67 @@ public class Employee {
 		this.role = role;
 		this.status = status;
 	}
-
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 	public String getSsn() {
 		return ssn;
 	}
-
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
-
 	public String getFirstName() {
 		return firstName;
 	}
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
 	public String getMiddleName() {
 		return middleName;
 	}
-
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-
 	public String getLastName() {
 		return lastName;
 	}
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
 	public String getSex() {
 		return sex;
 	}
-
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-
 	public String getBirthDate() {
 		return birthDate;
 	}
-
 	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
-
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
 	public Integer getRole() {
 		return role;
 	}
-
 	public void setRole(Integer role) {
 		this.role = role;
 	}
-
 	public String getStatus() {
 		return status;
 	}
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	
 	 
 }

@@ -4,6 +4,7 @@ package com.example.demo.controller;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +35,17 @@ public class EmployeeController {
 		  List<Employee> employees = (List<Employee>) employeeRepository.findAll();
 		  model.addAttribute("employees",employees);
 	    return "employee/all";
+	  }
+	
+	@RequestMapping("/employee/detail")
+	public String employeeDetail(Model model) {
+		   
+		  List<Employee> employees = (List<Employee>) employeeRepository.findAll();
+		  List<Address> address = (List<Address>) addressRepository.findAll();
+		  
+		  model.addAttribute("employees",employees);
+		  model.addAttribute("address",address);
+	    return "employee/detail";
 	  }
 	
 	@GetMapping("/employee/delete/{id}")
