@@ -1,5 +1,7 @@
-package com.example.demo.model;
+package com.example.demo.repository;
 import org.springframework.data.repository.CrudRepository;
+
+import com.example.demo.model.Branch;
 
 public interface BranchRepository extends CrudRepository<Branch, Integer>{
 

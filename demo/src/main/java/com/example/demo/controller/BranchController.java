@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.model.BranchRepository;
+import com.example.demo.repository.AddressRepository;
+import com.example.demo.repository.BranchRepository;
 
 import java.util.List;
 
 import com.example.demo.model.Address;
-import com.example.demo.model.AddressRepository;
 import com.example.demo.model.Branch;
 
 
@@ -66,7 +66,10 @@ public class BranchController {
 	    		  .orElseThrow(() -> new IllegalArgumentException("Invalid branch Id:" + id));
 	      
 	      
+	      Address address =  addressRepository;
 	      model.addAttribute("branch", branch);
+	      model.addAttribute("address", address);
+
 	      return "branch/edit";
 	  }
 	

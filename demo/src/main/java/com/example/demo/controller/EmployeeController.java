@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.model.Address;
-import com.example.demo.model.AddressRepository;
 import com.example.demo.model.Employee;
-import com.example.demo.model.EmployeeRepository;
+import com.example.demo.repository.AddressRepository;
+import com.example.demo.repository.EmployeeRepository;
 
 @Controller
 public class EmployeeController {
