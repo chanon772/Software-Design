@@ -2,38 +2,50 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>  
 <style type="text/css">
-    label {
-        display: inline-block;
-        width: 200px;
-        margin: 5px;
-        text-align: left;
-    }
-    input[type=text], input[type=password], select {
-        display: inline-block;
-        width: 200px;
-    }
-    input[type=radio] {
-        margin-left: 45px;
-    }
-    input[type=checkbox] {
-        margin-right: 190px;
-    }  
-    button {
-        padding: 5px;
-        margin: 10px;
-    }
-</style>
+	    label {
+	        display: inline-block;
+	        width: 200px;
+	        margin: 5px;
+	        text-align: left;
+	    }
+	    input[type=text], input[type=password], select.form-select {
+	        display: inline-block;
+	        width: 200px;
+	    }
+	    input[type=radio] {
+	        margin-left: 45px;
+	    }
+	    input[type=checkbox] {
+	        margin-right: 190px;
+	    }  
+	    button {
+	        padding: 5px;
+	        margin: 10px;
+	    }
+	</style>
 <title> Employee Detail </title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<script src="/assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 </head>
  
 <body>
 
+	<div class="view">
+	  <!-- Mask & flexbox options-->
+            <div class="mask rgba-gradient align-items-center">
+              <!-- Content -->
+              <div class="container">
+                <!--Grid row-->
+                <div class="row mt-5">
+                  <!--Grid column-->
 	<div align="center">
-   	 	<h1>Employee Detail</h1>
-  	</div>
-
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-4">Employee Detail</h1>
+		</div>
+	</div>
 	<form action="#" 
 	  th:action="@{/employee/update/{id}(id=${employee.id})}" 
 	  method="post">
@@ -59,12 +71,7 @@
 		    <br>
 		    
 		    <label for="sex">Sex</label>
-		    <select th:value="${employee.sex}" name="sex" class="form-select" id="sex">
-	            <option value="Male">Male</option>
-	            <option value="Female">Female</option>
-	            <option value="Other">Other</option>
-            
-      		 </select>
+	        <input type="text" th:value="${employee.sex}" name="sex" class="form-control" id="sex" placeholder="Sex">
 		    <span th:if="${#fields.hasErrors('employee.sex')}" th:errors="*{employee.sex}"></span>
 		    <br>
 		    
@@ -79,20 +86,12 @@
 		    <br>
 		    
 		    <label for="role">Role</label>
-		        <select th:value="${employee.role}" name="role" class="form-select" id="role">
-		            <option value="1">Chef</option>
-		            <option value="2">Manager</option>
-		            <option value="3">Accountant</option>
-		        </select>
+		        <input type="text" th:value="${employee.role}" name="role" class="form-control" id="role" placeholder="Role">
 		     	 <span th:if="${#fields.hasErrors('employee.role')}" th:errors="*{employee.role}"></span>
 		   		 <br>
 		    
-		    	<label for="status">Status</label>
-		      	<select th:value="${employee.status}" id="status" name="Status" class="form-select"> 
-		            <option value="Active">Active</option>
-		            <option value="Pause">Pause</option>
-		            <option value="Resigned">Resigned</option>
-		        </select> 
+		    	<label for="status">Status</label>	
+		        <input type="text" th:value="${employee.status}" name="status" class="form-control" id="status" placeholder="Status">
 		   		<span th:if="${#fields.hasErrors('employee.status')}" th:errors="*{employee.status}"></span> 
 		    	<br>
 		    
@@ -131,9 +130,14 @@
 			    <span th:if="${#fields.hasErrors('address.postalCode')}" th:errors="*{address.postalCode}"></span>
 				<br>
 			</fieldset>
-			
-	    <p><a href="/employee/all">Go back</a></p>  
+				<br>
+	 
 	</form>
    
+   </div>
+	</div>
+	</div>
+	</div>
+	</div>
    </body>
 </html>

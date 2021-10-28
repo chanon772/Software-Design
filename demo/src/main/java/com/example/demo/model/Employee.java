@@ -28,7 +28,7 @@ public class Employee {
 	 private String sex;
 	 private String birthDate;
 	 private String phoneNumber;
-	 private Integer role;
+	 private String role;
 	 private String status;
 	 
 	 @OneToOne(cascade = CascadeType.ALL)
@@ -57,7 +57,7 @@ public class Employee {
 	}
 
 	public Employee(Integer id, String ssn, String firstName, String middleName, String lastName, String sex,
-			String birthDate, String phoneNumber, Integer role, String status) {
+			String birthDate, String phoneNumber, String role, String status) {
 		super();
 		this.id = id;
 		this.ssn = ssn;
@@ -135,11 +135,11 @@ public class Employee {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Integer getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Integer role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

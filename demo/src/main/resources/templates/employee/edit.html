@@ -2,27 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>  
 <style type="text/css">
-    label {
-        display: inline-block;
-        width: 200px;
-        margin: 5px;
-        text-align: left;
-    }
-    input[type=text], input[type=password], select {
-        display: inline-block;
-        width: 200px;
-    }
-    input[type=radio] {
-        margin-left: 45px;
-    }
-    input[type=checkbox] {
-        margin-right: 190px;
-    }  
-    button {
-        padding: 5px;
-        margin: 10px;
-    }
-</style>
+	    label {
+	        display: inline-block;
+	        width: 200px;
+	        margin: 5px;
+	        text-align: left;
+	    }
+	    input[type=text], input[type=password], select.form-select {
+	        display: inline-block;
+	        width: 200px;
+	    }
+	    input[type=radio] {
+	        margin-left: 45px;
+	    }
+	    input[type=checkbox] {
+	        margin-right: 190px;
+	    }  
+	    button {
+	        padding: 5px;
+	        margin: 10px;
+	    }
+	</style>
 
 <meta charset="utf-8">
   <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
@@ -40,113 +40,130 @@
   
 <title> Edit Employee Information </title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<script src="/assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
 </head>
  
 <body>
+	<div class="view">
+	  <!-- Mask & flexbox options-->
+            <div class="mask rgba-gradient align-items-center">
+              <!-- Content -->
+              <div class="container">
+                <!--Grid row-->
+                <div class="row mt-5">
+                  <!--Grid column-->
 	<div align="center">
-    	<h1>Edit Employee Information</h1>
-   </div>
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-4">Edit Branch</h1>
+		</div>
+	</div>
 
-<form action="#" 
-  th:action="@{/employee/update/{id}(id=${employee.id})}" 
-  method="post">
-  	<label for="ssn">SSN</label>
-    <input type="text" th:value="${employee.ssn}" name="ssn" class="form-control" id="ssn" placeholder="SSN">
-    <span th:if="${#fields.hasErrors('employee.ssn')}" th:errors="*{employee.ssn}"></span>
-    <br>
-    
-    <label for="firstName">First Name</label>
-    <input type="text" th:value="${employee.firstName}" name="firstName" class="form-control" id="firstName" placeholder="First Name">
-    <span th:if="${#fields.hasErrors('employee.firstName')}" th:errors="*{employee.firstName}"></span>
-    <br>
-    
-    <label for="middleName">Middle Name</label>
-    <input type="text" th:value="${employee.middleName}" name="middleName" class="form-control" id="middleName" placeholder="Middle Name">
-    <span th:if="${#fields.hasErrors('employee.middleName')}" th:errors="*{employee.middleName}"></span>
-    <br>
-    
-    <label for="lastName">Last Name</label>
-    <input type="text" th:value="${employee.lastName}" name="lastName" class="form-control" id="lastName" placeholder="Last Name">
-    <span th:if="${#fields.hasErrors('employee.lastName')}" th:errors="*{employee.lastName}"></span>
-    <br>
-    
-    <label for="sex">Sex</label>
-    <select th:value="${employee.sex}" name="sex" class="form-select" id="sex">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-            
-       </select>
-    <span th:if="${#fields.hasErrors('employee.sex')}" th:errors="*{employee.sex}"></span>
-    <br>
-    
-    <label for="birthDate">Birth Date</label>
-    <input type="text" th:value="${employee.birthDate}" name="birthDate" class="form-control" id="datepicker" placeholder="Birth Date">
-    <span th:if="${#fields.hasErrors('employee.birthDate')}" th:errors="*{employee.birthDate}"></span>
-    <br>
-    
-    <label for="phoneNumber">Phone Number</label>
-    <input type="text" th:value="${employee.phoneNumber}" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone Number">
-    <span th:if="${#fields.hasErrors('employee.phoneNumber')}" th:errors="*{employee.phoneNumber}"></span>
-    <br>
-    
-    <label for="role">Role</label>
-        <select th:value="${employee.role}" name="role" class="form-select" id="role">
-            <option value="1">Chef</option>
-            <option value="2">Manager</option>
-            <option value="3">Accountant</option>
-        </select>
-     <span th:if="${#fields.hasErrors('employee.role')}" th:errors="*{employee.role}"></span>
-    <br>
-    
-    <label for="status">Status</label>
-      	<select th:value="${employee.status}" id="status" name="Status" class="form-select"> 
-            <option value="Active">Active</option>
-            <option value="Pause">Pause</option>
-            <option value="Resigned">Resigned</option>
-        </select> 
-   <span th:if="${#fields.hasErrors('employee.status')}" th:errors="*{employee.status}"></span> 
-    <br>
-    
-    <label for="houseNo">houseNo</label>
-	    <input class="form-control" type="text" th:value="${address.houseNo}" name="address.houseNo" id="address.houseNo" placeholder="houseNo">
-	    <span th:if="${#fields.hasErrors('address.houseNo')}" th:errors="*{address.houseNo}"></span>
-		<br>
-		
-		<label for="street">street</label>
-	    <input class="form-control" type="text" th:value="${address.street}" name="address.street" id="address.street" placeholder="street">
-	    <span th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}"></span>
-		<br>
-		
-		<label for="alley">alley</label>
-	    <input class="form-control" type="text" th:value="${address.alley}" name="address.alley" id="address.alley" placeholder="alley">
-	    <span th:if="${#fields.hasErrors('address.alley')}" th:errors="*{address.alley}"></span>
-		<br>
-		
-		<label for="villageNo">villageNo</label>
-	    <input class="form-control" type="text" th:value="${address.villageNo}" name="address.villageNo" id="address.villageNo" placeholder="villageNo">
-	    <span th:if="${#fields.hasErrors('address.villageNo')}" th:errors="*{address.villageNo}"></span>
-		<br>
-		
-		<label for="subDistrict">subDistrict</label>
-	    <input class="form-control" type="text" th:value="${address.subDistrict}" name="address.subDistrict" id="address.subDistrict" placeholder="subDistrict">
-	    <span th:if="${#fields.hasErrors('address.subDistrict')}" th:errors="*{address.subDistrict}"></span>
-		<br>
-		
-		<label for="province">province</label>
-	    <input class="form-control" type="text" th:value="${address.province}" name="address.province" id="address.province" placeholder="province">
-	    <span th:if="${#fields.hasErrors('address.province')}" th:errors="*{address.province}"></span>
-		<br>
-		
-		<label for="postalCode">postalCode</label>
-	    <input class="form-control" type="text" th:value="${address.postalCode}" name="address.postalCode" id="address.postalCode" placeholder="postalCode">
-	    <span th:if="${#fields.hasErrors('address.postalCode')}" th:errors="*{address.postalCode}"></span>
-		<br>
-		
-    <input type="submit" value="Edit Employee"> 
-    <p><a href="/employee/all">Go back</a></p>  
-</form>
+	<form action="#" 
+	  th:action="@{/employee/update/{id}(id=${employee.id})}" 
+	  method="post">
+		  	<label for="ssn">SSN</label>
+		    <input type="text" th:value="${employee.ssn}" name="ssn" class="form-control" id="ssn" placeholder="SSN">
+		    <span th:if="${#fields.hasErrors('employee.ssn')}" th:errors="*{employee.ssn}"></span>
+		    <br>
+		    
+		    <label for="firstName">First Name</label>
+		    <input type="text" th:value="${employee.firstName}" name="firstName" class="form-control" id="firstName" placeholder="First Name">
+		    <span th:if="${#fields.hasErrors('employee.firstName')}" th:errors="*{employee.firstName}"></span>
+		    <br>
+		    
+		    <label for="middleName">Middle Name</label>
+		    <input type="text" th:value="${employee.middleName}" name="middleName" class="form-control" id="middleName" placeholder="Middle Name">
+		    <span th:if="${#fields.hasErrors('employee.middleName')}" th:errors="*{employee.middleName}"></span>
+		    <br>
+		    
+		    <label for="lastName">Last Name</label>
+		    <input type="text" th:value="${employee.lastName}" name="lastName" class="form-control" id="lastName" placeholder="Last Name">
+		    <span th:if="${#fields.hasErrors('employee.lastName')}" th:errors="*{employee.lastName}"></span>
+		    <br>
+		    
+		    <label for="sex">Sex</label>
+		    <select th:value="${employee.sex}" name="sex" class="form-select" id="sex">
+		            <option value="Male">Male</option>
+		            <option value="Female">Female</option>
+		            <option value="Other">Other</option>
+		            
+		       </select>
+		    <span th:if="${#fields.hasErrors('employee.sex')}" th:errors="*{employee.sex}"></span>
+		    <br>
+		    
+		    <label for="birthDate">Birth Date</label>
+		    <input type="text" th:value="${employee.birthDate}" name="birthDate" class="form-control" id="datepicker" placeholder="Birth Date">
+		    <span th:if="${#fields.hasErrors('employee.birthDate')}" th:errors="*{employee.birthDate}"></span>
+		    <br>
+		    
+		    <label for="phoneNumber">Phone Number</label>
+		    <input type="text" th:value="${employee.phoneNumber}" name="phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone Number">
+		    <span th:if="${#fields.hasErrors('employee.phoneNumber')}" th:errors="*{employee.phoneNumber}"></span>
+		    <br>
+		    
+		    <label for="role">Role</label>
+		        <select th:value="${employee.role}" name="role" class="form-select" id="role">
+		            <option value="Chef">Chef</option>
+		            <option value="Manager">Manager</option>
+		            <option value="Accountant">Accountant</option>
+		        </select>
+		     <span th:if="${#fields.hasErrors('employee.role')}" th:errors="*{employee.role}"></span>
+		    <br>
+		    
+		    <label for="status">Status</label>
+		      	<select th:value="${employee.status}" id="status" name="Status" class="form-select"> 
+		            <option value="Active">Active</option>
+		            <option value="Pause">Pause</option>
+		            <option value="Resigned">Resigned</option>
+		        </select> 
+		   <span th:if="${#fields.hasErrors('employee.status')}" th:errors="*{employee.status}"></span> 
+		    <br>
+		    
+		    <label for="houseNo">houseNo</label>
+			    <input class="form-control" type="text" th:value="${address.houseNo}" name="address.houseNo" id="address.houseNo" placeholder="houseNo">
+			    <span th:if="${#fields.hasErrors('address.houseNo')}" th:errors="*{address.houseNo}"></span>
+				<br>
+				
+				<label for="street">street</label>
+			    <input class="form-control" type="text" th:value="${address.street}" name="address.street" id="address.street" placeholder="street">
+			    <span th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}"></span>
+				<br>
+				
+				<label for="alley">alley</label>
+			    <input class="form-control" type="text" th:value="${address.alley}" name="address.alley" id="address.alley" placeholder="alley">
+			    <span th:if="${#fields.hasErrors('address.alley')}" th:errors="*{address.alley}"></span>
+				<br>
+				
+				<label for="villageNo">villageNo</label>
+			    <input class="form-control" type="text" th:value="${address.villageNo}" name="address.villageNo" id="address.villageNo" placeholder="villageNo">
+			    <span th:if="${#fields.hasErrors('address.villageNo')}" th:errors="*{address.villageNo}"></span>
+				<br>
+				
+				<label for="subDistrict">subDistrict</label>
+			    <input class="form-control" type="text" th:value="${address.subDistrict}" name="address.subDistrict" id="address.subDistrict" placeholder="subDistrict">
+			    <span th:if="${#fields.hasErrors('address.subDistrict')}" th:errors="*{address.subDistrict}"></span>
+				<br>
+				
+				<label for="province">province</label>
+			    <input class="form-control" type="text" th:value="${address.province}" name="address.province" id="address.province" placeholder="province">
+			    <span th:if="${#fields.hasErrors('address.province')}" th:errors="*{address.province}"></span>
+				<br>
+				
+				<label for="postalCode">postalCode</label>
+			    <input class="form-control" type="text" th:value="${address.postalCode}" name="address.postalCode" id="address.postalCode" placeholder="postalCode">
+			    <span th:if="${#fields.hasErrors('address.postalCode')}" th:errors="*{address.postalCode}"></span>
+				<br>
+				
+		    <button type="submit" class="btn btn-info text-white mt-2">Edit Employee</button><br>
+		</form>
    
+   </div>
+	</div>
+	</div>
+	</div>
+	</div>
    </body>
 </html>
