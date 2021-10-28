@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.repository.RelationshipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,8 @@ import com.example.demo.repository.AddressRepository;
 import com.example.demo.repository.BranchRepository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 import com.example.demo.model.Address;
 import com.example.demo.model.Branch;
@@ -29,6 +32,8 @@ public class BranchController {
 	@Autowired
 	private AddressRepository addressRepository;
 	
+	@Autowired
+	private RelationshipRepository relationshipRepository =  new RelationshipRepository();
 	
 	@RequestMapping("/branch/all")
 	public String allBranches(Model model) {
@@ -48,15 +53,18 @@ public class BranchController {
 	
 	
 	@PostMapping("/branch/update/{id}")
-	  public String updateUser(@PathVariable("id") Integer id, @Validated  Branch branch, 
+	  public String updateUser(@PathVariable("id") Integer id, @Validated  Branch branch, @Validated Address address,
 	    BindingResult result, Model model) {
 	     
 		if (result.hasErrors()) {
 			branch.setId(id);
 	          return "/branch/edit";
 	      }
-	          
-		branchRepository.save(branch);
+
+		System.out.println(branch);
+		System.out.println(address);
+//		branchRepository.save(branch);
+//		addressRepository.save(address);
 		return "redirect:/branch/all";
 	  }
 	
@@ -65,8 +73,12 @@ public class BranchController {
 	      Branch branch = branchRepository.findById(id)
 	    		  .orElseThrow(() -> new IllegalArgumentException("Invalid branch Id:" + id));
 	      
+	      Integer address_id = relationshipRepository.findAddressIdByBranchId(branch.getId());
+//	      System.out.println(address_id);
+	      Address address = addressRepository.findById(address_id).get();
 	      
-	      Address address =  addressRepository;
+	      System.out.println(branch);
+		  System.out.println(address);
 	      model.addAttribute("branch", branch);
 	      model.addAttribute("address", address);
 

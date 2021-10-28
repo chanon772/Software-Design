@@ -99,18 +99,19 @@ public class Address {
 	public void setPostalCode(String postalCode) {
 		this.postalCode = postalCode;
 	}
-//	public Employee getEmployee() {
-//		return employee;
-//	}
-//	public void setEmployee(Employee employee) {
-//		this.employee = employee;
-//	}
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 	public Branch getBranch() {
 		return branch;
 	}
 	public void setBranch(Branch branch) {
 		this.branch = branch;
 	}
+	
 	
 	
 	
