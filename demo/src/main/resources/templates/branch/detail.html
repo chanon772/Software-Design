@@ -118,6 +118,7 @@
 	                        <th scope="col">Employee Id</th>
 	                        <th scope="col">Employee name</th>
 	                        <th scope="col">Employee lastname</th>
+	                        <th scope="col">Delete</th>
 	                     </tr>
 	                  </thead>
 	                  <tbody>
@@ -125,13 +126,16 @@
 	                        <td   th:text="${employee.id}"></td>
 	                        <td   th:text="${employee.firstName}"></td>
 	                        <td   th:text="${employee.lastName}"></td>
+	                        <td><a th:href="@{/branch/remove_employee/{branch_id}/{employee_id}(branch_id=${branch.id}, employee_id=${employee.id})}">  <button class="btn btn-danger" type="submit">Delete</button></a></td>
+
 	                     </tr>
 	                  </tbody>
 	               </table>
 	            </div>
 	         </div>
 	      </div>
-	      <a href="/branch/add_employee"><button type="submit" class="btn btn-primary">Add new Employee</button></a>
+	      <a th:href="@{/branch/{branch_id}/add_employee(branch_id=${branch.id})}"><button type="submit" class="btn btn-primary">Add new Employee</button></a>
+	      
 	   </div>
 	</div> 
 	
