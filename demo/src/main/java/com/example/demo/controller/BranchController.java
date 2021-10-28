@@ -105,61 +105,8 @@ public class BranchController {
 		return "/branch/add_employee";
 	}
 	
-//	@PostMapping("/branch/add_employee")
-//	public String testaddEmployeeToBranchForm(@Validated BranchEmployeeForm form, BindingResult result, Model model) {
-//		
-//		
-//		
-//	    int branch_id = form.getBranchId();
-//	    int employee_id = form.getEmployeeId();
-//	    
-//	    
-//	    
-//	    Branch branch = branchRepository.findById(branch_id).get();
-//	    Employee employee = employeeRepository.findById(employee_id).get();
-//	    
-//	    System.out.println(form);
-//	    System.out.println(branch_id);
-//	    System.out.println(employee_id);
-//	    System.out.println(branch);
-//	    System.out.println(employee);
-//	    
-//	    employee.setBranch(branch);
-//		employeeRepository.save(employee);
-//		
-////		branch.getEmployees().add(employee);
-////		branchRepository.save(branch);
-//		
-//		return branchDetail(branch_id, model);
-//	}
-//	
-//	@GetMapping("/branch/add_employee")
-//	public String testaddEmployeeToBranchForm(Model model) {
-//		
-//	   
-//	    model.addAttribute("form",  new BranchEmployeeForm());
-//
-//		return "/test/add_employee";
-//	}
 	
-	@PostMapping("/branch/update/{id}")
-	  public String updateUser(@PathVariable("id") Integer id, @Validated  Branch branch,
-	    BindingResult result, Model model) {
-	     
-		if (result.hasErrors()) {
-			branch.setId(id);
-	          return "/branch/edit";
-	      }
-		
-	    Integer address_id = relationshipRepository.findAddressIdByBranchId(branch.getId());
-	    Address address = addressRepository.findById(address_id).get();
-	     
-	    branch.getAddress().setId(address.getId());
-	    
-		branchRepository.save(branch);
-		
-		return "redirect:/branch/all";
-	  }
+	
 	
 	@GetMapping("/branch/detail/{branch_id}")
 	public String branchDetail(@PathVariable("branch_id") int branch_id, Model model) {
@@ -186,6 +133,26 @@ public class BranchController {
 	      model.addAttribute("branch", branch);
 	      
 	      return "branch/edit";
+	  }
+	
+	@PostMapping("/branch/update/{id}")
+	  public String updateUser(@PathVariable("id") Integer id, @Validated  Branch branch,
+	    BindingResult result, Model model) {
+	     
+		if (result.hasErrors()) {
+			branch.setId(id);
+	          return "/branch/edit";
+	      }
+		
+	    Integer address_id = relationshipRepository.findAddressIdByBranchId(branch.getId());
+	    Address address = addressRepository.findById(address_id).get();
+	    
+	    
+	    branch.getAddress().setId(address.getId());
+	    
+		branchRepository.save(branch);
+		
+		return "redirect:/branch/all";
 	  }
 	
 	@PostMapping("/branch/add")

@@ -42,7 +42,7 @@ public class Branch {
 	private Address address;
 	
 	@OneToMany(mappedBy = "branch",
-            orphanRemoval = true,
+            orphanRemoval = false,
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
 	private List<Employee> employees;
@@ -85,7 +85,14 @@ public class Branch {
 		return employees;
 	}
 	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
+		
+		if (this.employees == null){
+			this.employees = employees;
+		}else {
+			this.employees.retainAll(employees);
+			this.employees.addAll(employees);
+			
+		}
 	}
 	
 	
