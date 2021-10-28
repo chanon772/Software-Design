@@ -53,18 +53,21 @@ public class BranchController {
 	
 	
 	@PostMapping("/branch/update/{id}")
-	  public String updateUser(@PathVariable("id") Integer id, @Validated  Branch branch, @Validated Address address,
+	  public String updateUser(@PathVariable("id") Integer id, @Validated  Branch branch,
 	    BindingResult result, Model model) {
 	     
 		if (result.hasErrors()) {
 			branch.setId(id);
 	          return "/branch/edit";
 	      }
-
-		System.out.println(branch);
-		System.out.println(address);
-//		branchRepository.save(branch);
-//		addressRepository.save(address);
+		
+	    Integer address_id = relationshipRepository.findAddressIdByBranchId(branch.getId());
+	    Address address = addressRepository.findById(address_id).get();
+	     
+	    branch.getAddress().setId(address.getId());
+	    
+		branchRepository.save(branch);
+		
 		return "redirect:/branch/all";
 	  }
 	
@@ -73,15 +76,10 @@ public class BranchController {
 	      Branch branch = branchRepository.findById(id)
 	    		  .orElseThrow(() -> new IllegalArgumentException("Invalid branch Id:" + id));
 	      
-	      Integer address_id = relationshipRepository.findAddressIdByBranchId(branch.getId());
-//	      System.out.println(address_id);
-	      Address address = addressRepository.findById(address_id).get();
 	      
-	      System.out.println(branch);
-		  System.out.println(address);
+		  model.addAttribute("address", branch.getAddress());
 	      model.addAttribute("branch", branch);
-	      model.addAttribute("address", address);
-
+	      
 	      return "branch/edit";
 	  }
 	
