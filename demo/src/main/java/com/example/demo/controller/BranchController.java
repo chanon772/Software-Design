@@ -71,6 +71,18 @@ public class BranchController {
 		return "redirect:/branch/all";
 	  }
 	
+	@GetMapping("/branch/detail/{id}")
+	public String branchDetail(@PathVariable("id") int id, Model model) {
+	      Branch branch = branchRepository.findById(id)
+	    		  .orElseThrow(() -> new IllegalArgumentException("Invalid branch Id:" + id));
+	      
+	      
+		  model.addAttribute("address", branch.getAddress());
+	      model.addAttribute("branch", branch);
+	      
+	      return "branch/detail";
+	  }
+	
 	@GetMapping("/branch/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") int id, Model model) {
 	      Branch branch = branchRepository.findById(id)
