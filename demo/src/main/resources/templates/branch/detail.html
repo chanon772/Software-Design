@@ -124,7 +124,7 @@
 	                  <tbody>
 	                     <tr scope="row", th:each="employee : ${employees}">
 	                        <td   th:text="${employee.id}"></td>
-	                        <td   th:text="${employee.firstName}"></td>
+	                        <td> <a th:text="${employee.firstName}" th:href="@{/employee/detail/{id}(id=${employee.id})}" > </a> </td>
 	                        <td   th:text="${employee.lastName}"></td>
 	                        <td><a th:href="@{/branch/remove_employee/{branch_id}/{employee_id}(branch_id=${branch.id}, employee_id=${employee.id})}">  <button class="btn btn-danger" type="submit">Delete</button></a></td>
 
