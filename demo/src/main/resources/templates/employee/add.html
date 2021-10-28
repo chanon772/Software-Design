@@ -23,6 +23,22 @@
         margin: 10px;
     }
 </style>
+
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="jqueryui/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+  </script>
+
+
 <title> Add Employee </title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
@@ -32,7 +48,7 @@
 <div align="center">
     <h1>Add Employee</h1>
    <form action="#" th:action="@{/employee/add}" method="post">
-   
+
 
      <label>SSN:</label>
 	 <input type="text" th:value="${employee.ssn}" name="ssn" class="form-control"/><br>
@@ -46,11 +62,17 @@
      <label>Last Name:</label>
      <input type="text" th:value="${employee.lastName}" name="lastName" class="form-control"/><br>
       
-     <label>Sex (Male/Female/Other):</label>
-     <input type="text" th:value="${employee.sex}" name="sex" class="form-control"/><br>
+     <label>Sex:</label>
+     <select th:value="${employee.sex}" name="sex" class="form-select">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+            
+       </select>
+       <br>
       
-     <label>Birth Date (DD/MM/YYYY):</label>
-     <input type="text" th:value="${employee.birthDate}" name="birthDate" class="form-control"/><br>
+     <label>Birth Date (MM/DD/YYYY):</label>
+     <input type="text" th:value="${employee.birthDate}" name="birthDate" class="form-control" id="datepicker"><br>
       
       <label>Phone Number:</label>
       <input type="text" th:value="${employee.phoneNumber}" name="phoneNumber" class="form-control"/><br>

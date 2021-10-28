@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.model.Address;
+import com.example.demo.model.Branch;
 import com.example.demo.model.Employee;
 import com.example.demo.repository.AddressRepository;
 import com.example.demo.repository.EmployeeRepository;
@@ -41,15 +42,17 @@ public class EmployeeController {
 	    return "employee/all";
 	  }
 	
-	@RequestMapping("/employee/detail")
-	public String employeeDetail(Model model) {
-		   
-		  List<Employee> employees = (List<Employee>) employeeRepository.findAll();
-		  List<Address> address = (List<Address>) addressRepository.findAll();
-		  
-		  model.addAttribute("employees",employees);
-		  model.addAttribute("address",address);
-	    return "employee/detail";
+	@GetMapping("/employee/detail/{employee_id}")
+	public String employeeDetail(@PathVariable("employee_id") int employee_id, Model model) {
+	      Employee employee = employeeRepository.findById(employee_id)
+	    		  .orElseThrow(() -> new IllegalArgumentException("Invalid branch Id:" + employee_id));
+	      
+	      
+	    
+		  model.addAttribute("address", employee.getAddress());
+	      model.addAttribute("employee", employee);
+	      
+	      return "employee/detail";
 	  }
 	
 	@GetMapping("/employee/delete/{id}")
