@@ -20,6 +20,7 @@ import com.example.demo.model.Address;
 import com.example.demo.model.Employee;
 import com.example.demo.repository.AddressRepository;
 import com.example.demo.repository.EmployeeRepository;
+import com.example.demo.repository.RelationshipRepository;
 
 @Controller
 public class EmployeeController {
@@ -28,6 +29,9 @@ public class EmployeeController {
 	
 	@Autowired
 	private AddressRepository addressRepository;
+	
+	@Autowired
+	private RelationshipRepository relationshipRepository =  new RelationshipRepository();
 	
 	@RequestMapping("/employee/all")
 	public String employeeForm(Model model) {
@@ -57,30 +61,35 @@ public class EmployeeController {
 	  }
 	 
 	  @PostMapping("/employee/update/{id}")
-	  public String updateEmployee(@PathVariable("id") Integer id, @Validated  Employee employee, @Validated Address address, 
+	  public String updateEmployee(@PathVariable("id") Integer id, @Validated  Employee employee,
 	    BindingResult result, Model model) {
-	     System.out.println(employee); 
-		 //System.out.println(employee.getId()+ employee.getFirstname());
+	    
 		if (result.hasErrors()) {
 	          employee.setId(id);
-	          address.setId(id);
 	          return "employee/edit";
 	      }
 	      
-		  employee.setAddress(address);
-	      employeeRepository.save(employee);
-	      return "redirect:/employee/all";
+		Integer address_id = relationshipRepository.findAddressIdByEmployeeId(employee.getId());
+	    Address address = addressRepository.findById(address_id).get();
+	    
+	    System.out.println(employee.getAddress());
+	    System.out.println(address);
+	    
+		employee.getAddress().setId(address.getId());
+		employeeRepository.save(employee);
+	    return "redirect:/employee/all";
 	  }
+	  
+	  
 	  @GetMapping("/employee/edit/{id}")
 	  public String showUpdateForm(@PathVariable("id") int id, Model model) {
 	      Employee employee = employeeRepository.findById(id)
 	        .orElseThrow(() -> new IllegalArgumentException("Invalid employee Id:" + id));
+	      System.out.println(employee.getAddress());
 	      
-	      Address address = addressRepository.findById(id)
-	  	        .orElseThrow(() -> new IllegalArgumentException("Invalid address Id:" + id));
-	      
+	      model.addAttribute("address", employee.getAddress());
 	      model.addAttribute("employee", employee);
-	      model.addAttribute("address", address);
+	      
 	      return "employee/edit";
 	  }
 	  

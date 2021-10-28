@@ -14,7 +14,7 @@ public class RelationshipRepository  {
 
     public Integer findAddressIdByEmployeeId(int id){
 
-	    String sql_str  = "SELECT address_id from  employee_address WHERE customer_id = ?";
+	    String sql_str  = "SELECT address_id from  employee_address WHERE employee_id = ?";
 
 	    return jdbcTemplate.queryForObject(sql_str,  new Object[]{id}, Integer.class);
     }

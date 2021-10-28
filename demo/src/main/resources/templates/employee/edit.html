@@ -33,7 +33,6 @@
 
 <form action="#" 
   th:action="@{/employee/update/{id}(id=${employee.id})}" 
-  th:object="${employee}" 
   method="post">
   	<label for="ssn">SSN</label>
     <input type="text" th:value="${employee.ssn}" name="ssn" class="form-control" id="ssn" placeholder="SSN">
@@ -88,41 +87,41 @@
    <span th:if="${#fields.hasErrors('employee.status')}" th:errors="*{employee.status}"></span> 
     <br>
     
-    <label>House No.:</label>
-	<input type="text" th:value="${address.houseNo}" name="houseNo" class="form-control"/>
-    <span th:if="${#fields.hasErrors('address.houseNo')}" th:errors="*{address.houseNo}"></span>
-    <br>
-    
-    <label>Street:</label>
-	<input type="text" th:value="${address.street}" name="street" class="form-control"/>
-	<span th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}"></span>
-    <br>
-    
-    <label>Alley:</label>
-	<input type="text" th:value="${address.alley}" name="alley" class="form-control"/>
-	<span th:if="${#fields.hasErrors('address.alley')}" th:errors="*{address.alley}"></span>
-    <br>
-    
-    <label>VillageNo:</label>
-	<input type="text" th:value="${address.villageNo}" name="villageNo" class="form-control"/>
-	<span th:if="${#fields.hasErrors('address.alley')}" th:errors="*{address.alley}"></span>
-    <br>
-    
-    <label>Sub-district:</label>
-	<input type="text" th:value="${address.subDistrict}" name="subDistrict" class="form-control"/>
-	<span th:if="${#fields.hasErrors('address.subDistrict')}" th:errors="*{address.subDistrict}"></span>
-    <br>
-    
-    <label>Province:</label>
-	<input type="text" th:value="${address.province}" name="province" class="form-control"/>
-	<span th:if="${#fields.hasErrors('address.province')}" th:errors="*{address.province}"></span>
-    <br>
-    
-    <label>Postal Code:</label>
-	<input type="text" th:value="${address.postalCode}" name="postalCode" class="form-control"/>
-    <span th:if="${#fields.hasErrors('address.postalCode')}" th:errors="*{address.postalCode}"></span>
-    <br>
-    
+    <label for="houseNo">houseNo</label>
+	    <input class="form-control" type="text" th:value="${address.houseNo}" name="address.houseNo" id="address.houseNo" placeholder="houseNo">
+	    <span th:if="${#fields.hasErrors('address.houseNo')}" th:errors="*{address.houseNo}"></span>
+		<br>
+		
+		<label for="street">street</label>
+	    <input class="form-control" type="text" th:value="${address.street}" name="address.street" id="address.street" placeholder="street">
+	    <span th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}"></span>
+		<br>
+		
+		<label for="alley">alley</label>
+	    <input class="form-control" type="text" th:value="${address.alley}" name="address.alley" id="address.alley" placeholder="alley">
+	    <span th:if="${#fields.hasErrors('address.alley')}" th:errors="*{address.alley}"></span>
+		<br>
+		
+		<label for="villageNo">villageNo</label>
+	    <input class="form-control" type="text" th:value="${address.villageNo}" name="address.villageNo" id="address.villageNo" placeholder="villageNo">
+	    <span th:if="${#fields.hasErrors('address.villageNo')}" th:errors="*{address.villageNo}"></span>
+		<br>
+		
+		<label for="subDistrict">subDistrict</label>
+	    <input class="form-control" type="text" th:value="${address.subDistrict}" name="address.subDistrict" id="address.subDistrict" placeholder="subDistrict">
+	    <span th:if="${#fields.hasErrors('address.subDistrict')}" th:errors="*{address.subDistrict}"></span>
+		<br>
+		
+		<label for="province">province</label>
+	    <input class="form-control" type="text" th:value="${address.province}" name="address.province" id="address.province" placeholder="province">
+	    <span th:if="${#fields.hasErrors('address.province')}" th:errors="*{address.province}"></span>
+		<br>
+		
+		<label for="postalCode">postalCode</label>
+	    <input class="form-control" type="text" th:value="${address.postalCode}" name="address.postalCode" id="address.postalCode" placeholder="postalCode">
+	    <span th:if="${#fields.hasErrors('address.postalCode')}" th:errors="*{address.postalCode}"></span>
+		<br>
+		
     <input type="submit" value="Edit Employee">   
 </form>
    
