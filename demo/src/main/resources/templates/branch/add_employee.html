@@ -58,6 +58,7 @@
 	                        <th scope="col">Employee Id</th>
 	                        <th scope="col">Employee name</th>
 	                        <th scope="col">Employee lastname</th>
+	                        <th scope="col">Add</th>
 	                     </tr>
 	                  </thead>
 	                  <tbody>
@@ -65,6 +66,8 @@
 	                        <td   th:text="${employee.id}"></td>
 	                        <td   th:text="${employee.firstName}"></td>
 	                        <td   th:text="${employee.lastName}"></td>
+	                        <td><a th:href="@{/branch/add_employee/{branch_id}/{employee_id}(branch_id=${branch.id}, employee_id=${employee.id})}">  <button class="btn btn-info text-white" type="submit">Add</button></a></td>
+
 	                     </tr>
 	                  </tbody>
 	               </table>

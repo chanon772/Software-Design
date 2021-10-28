@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.repository.RelationshipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,6 +42,8 @@ public class BranchController {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
+	@Autowired
+    private  JdbcTemplate jdbcTemplate;
 	
 	@RequestMapping("/branch/all")
 	public String allBranches(Model model) {
@@ -59,8 +62,8 @@ public class BranchController {
 	}
 	
 	
-	@PostMapping("/branch/add_employee/{branch_id}/{employee_id}")
-	public String addEmployeeToBranch(@PathVariable("branch_id") Integer branch_id, @PathVariable("employee_id") Integer employee_id,  BindingResult result, Model model) {
+	@GetMapping("/branch/add_employee/{branch_id}/{employee_id}")
+	public String addEmployeeToBranch(@PathVariable("branch_id") Integer branch_id, @PathVariable("employee_id") Integer employee_id, Model model) {
 		
 	    
 		//Check if  not found;
@@ -70,45 +73,74 @@ public class BranchController {
 	    employee.setBranch(branch);
 		employeeRepository.save(employee);
 
-		return "redirect:/branch/detail/branch_id";
+		return  branchDetail(branch_id, model);
 	}
 	
-	@PostMapping("/branch/add_employee")
-	public String testaddEmployeeToBranchForm(@Validated BranchEmployeeForm form, BindingResult result, Model model) {
+	
+	@GetMapping("/branch/remove_employee/{branch_id}/{employee_id}")
+	public String removeEmployeeFromBranch(@PathVariable("branch_id") Integer branch_id, @PathVariable("employee_id") Integer employee_id, Model model) {
 		
 		
-		
-	    int branch_id = form.getBranchId();
-	    int employee_id = form.getEmployeeId();
+		String sql = "DELETE FROM branch_employee WHERE branch_id = ? AND employee_id = ?";
+	    Object[] args = new Object[] {branch_id, employee_id, };
 	    
+	    jdbcTemplate.update(sql, args);
 	    
-	    
-	    Branch branch = branchRepository.findById(branch_id).get();
-	    Employee employee = employeeRepository.findById(employee_id).get();
-	    
-	    System.out.println(form);
-	    System.out.println(branch_id);
-	    System.out.println(employee_id);
-	    System.out.println(branch);
-	    System.out.println(employee);
-	    
-	    employee.setBranch(branch);
-		employeeRepository.save(employee);
-		
-//		branch.getEmployees().add(employee);
-//		branchRepository.save(branch);
-		
+//		model.addAttribute("employees",  employees);
+
 		return branchDetail(branch_id, model);
 	}
 	
-	@GetMapping("/branch/add_employee")
-	public String testaddEmployeeToBranchForm(Model model) {
-		
+	@GetMapping("/branch/{branch_id}/add_employee")
+	public String addEmployeeToBranchWithOnlyAvailableEmployee(@PathVariable("branch_id") Integer branch_id, Model model) {
+		System.out.println(branch_id);
+	   List<Employee> employees  =  relationshipRepository.findAllAvailableEmployee();
 	   
-	    model.addAttribute("form",  new BranchEmployeeForm());
+	   Branch branch = branchRepository.findById(branch_id)
+	    		  .orElseThrow(() -> new IllegalArgumentException("Invalid branch Id:" + branch_id));
+	   
+	   model.addAttribute("branch", branch);
+	   model.addAttribute("employees",  employees);
 
-		return "/test/add_employee";
+		return "/branch/add_employee";
 	}
+	
+//	@PostMapping("/branch/add_employee")
+//	public String testaddEmployeeToBranchForm(@Validated BranchEmployeeForm form, BindingResult result, Model model) {
+//		
+//		
+//		
+//	    int branch_id = form.getBranchId();
+//	    int employee_id = form.getEmployeeId();
+//	    
+//	    
+//	    
+//	    Branch branch = branchRepository.findById(branch_id).get();
+//	    Employee employee = employeeRepository.findById(employee_id).get();
+//	    
+//	    System.out.println(form);
+//	    System.out.println(branch_id);
+//	    System.out.println(employee_id);
+//	    System.out.println(branch);
+//	    System.out.println(employee);
+//	    
+//	    employee.setBranch(branch);
+//		employeeRepository.save(employee);
+//		
+////		branch.getEmployees().add(employee);
+////		branchRepository.save(branch);
+//		
+//		return branchDetail(branch_id, model);
+//	}
+//	
+//	@GetMapping("/branch/add_employee")
+//	public String testaddEmployeeToBranchForm(Model model) {
+//		
+//	   
+//	    model.addAttribute("form",  new BranchEmployeeForm());
+//
+//		return "/test/add_employee";
+//	}
 	
 	@PostMapping("/branch/update/{id}")
 	  public String updateUser(@PathVariable("id") Integer id, @Validated  Branch branch,
