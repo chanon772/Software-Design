@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Branch Information</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#"></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+	    <div class="navbar-nav">
+	      <a class="nav-item nav-link  active" href="/branch/all">Branch <span class="sr-only"></span></a>
+	      <a class="nav-item nav-link " href="/employee/all">Employee</a>
+	     
+	    </div>
+	  </div>
+	</nav>
+	
+<div class="view">
+    <div align="center">
+    <h1> Branch Information</h1>
+    <div class="container"> 
+    <div class="row">
+        <div class="col-lg-10 mt-5 mb-5">
+            <table id="example" class="table table-bordered" style="width: 100%">     
+                <!--- This is a comment !-->
+                <thead class="table-dark"  >
+                    <tr>
+						<th scope="col">Branch Id</th>
+
+                        <th scope="col">Branch name</th>
+                        <th scope="col">Phone number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Update</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                <tr scope="row", th:each="branch : ${branches}">
+                
+                	<td   th:text="${branch.id}"></td>
+                    <td   ><a th:text="${branch.name}" th:href="@{/branch/detail/{id}(id=${branch.id})}" ></a></td>
+                    <td   th:text="${branch.phoneNumber}"></td>
+                    <td   th:text="${branch.email}"></td>
+                     
+                    <td><a th:href="@{/branch/edit/{id}(id=${branch.id})}">  <button class="btn btn-info text-white" type="submit">Edit</button></a></td>
+                    <td><a th:href="@{/branch/delete/{id}(id=${branch.id})}"><button class="btn btn-danger" type="submit">Delete</button></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+    </div>  
+    </div>    
+    <a href="/branch/add"><button type="submit" class="btn btn-primary">New branch</button></a>
+</div> 
+</div>  
+    
+</body>
+</html>

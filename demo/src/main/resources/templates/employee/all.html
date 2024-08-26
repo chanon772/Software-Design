@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<style type="text/css">
+	
+
+
+</style>
+
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="#"></a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+	    <div class="navbar-nav">
+	      <a class="nav-item nav-link" href="/branch/all">Branch <span class="sr-only"></span></a>
+	      <a class="nav-item nav-link active" href="/employee/all">Employee</a>
+	     
+	    </div>
+	  </div>
+	</nav>
+		
+    <div class="view">
+    <div align="center">
+    <h1> Employee Information</h1>
+    <div class="container"> 
+    <div class="row">
+        <div class="col-lg-10 mt-5 mb-5">
+            <table id="example" class="table table-bordered" style="width: 100%">     
+                <!--- This is a comment !-->
+                <thead class="table-dark"  >
+                    <tr>
+                    	<th scope="col">SSN</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Middle Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Sex</th>
+                        <th scope="col">Birth Date</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr scope="row", th:each="employee : ${employees}">
+                	<td   th:text="${employee.ssn}"></td>
+                    <td> <a th:text="${employee.firstName}" th:href="@{/employee/detail/{id}(id=${employee.id})}" > </a> </td>
+                    <td  th:text="${employee.middleName}"></td>
+                    <td  th:text="${employee.lastName}"></td>
+                    <td  th:text="${employee.sex}"></td>
+                    <td  th:text="${employee.birthDate}"></td>
+                    <td  th:text="${employee.phoneNumber}"></td>
+                    <td  th:text="${employee.role}"></td>
+                    <td  th:text="${employee.status}"></td>
+                    <td><a th:href="@{/employee/edit/{id}(id=${employee.id})}">  <button class="btn btn-info text-white" type="submit">Edit</button></a></td>
+                    <td><a th:href="@{/employee/delete/{id}(id=${employee.id})}"><button class="btn btn-danger" type="submit">Delete</button></a></td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+    </div>  
+    </div>    
+    <a href="/employee/add"><button type="submit" class="btn btn-primary">Add a new employee</button></a>
+     </div>
+    </div>
+ 
+</body>
+</html>

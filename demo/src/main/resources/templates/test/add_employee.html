@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>  
+    <style type="text/css">
+        label {
+            display: inline-block;
+            width: 200px;
+            margin: 5px;
+            text-align: left;
+        }
+        input[type=text], input[type=password], select {
+            display: inline-block;
+            width: 200px;
+        }
+        input[type=radio] {
+            margin-left: 45px;
+        }
+        input[type=checkbox] {
+            margin-right: 190px;
+        }  
+        button {  
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+    <title> Employee Register </title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="/assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+</head>
+  
+<body>
+<div class="view">
+	<div align="center">
+		 <!-- Mask & flexbox options-->
+            <div class="mask rgba-gradient align-items-center">
+              <!-- Content -->
+              <div class="container">
+                <!--Grid row-->
+                <div class="row mt-5">
+				    <h1>Add a branch.</h1>
+				    <form action="#" th:action="@{/branch/add_employee}" method="post">
+		
+		
+				        <label>Branch Id:</label>
+				        <input type="number" th:value="${form.branchId}" name="branchId" class="form-control"/><br>
+				        
+				        <label>Employee Id:</label>
+				        <input type="number" th:value="${form.employeeId}" name="employeeId" class="form-control"/><br>
+				        
+				     
+				        <button type="submit" class="btn btn-primary mt-2">Submit</button>    
+				    </form> 
+	    		</div>
+	    	</div>
+	    </div>
+	</div>
+</div>
+   
+</body>
+</html>

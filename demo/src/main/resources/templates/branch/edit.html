@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>  
+	<style type="text/css">
+	    label {
+	        display: inline-block;
+	        width: 200px;
+	        margin: 5px;
+	        text-align: left;
+	    }
+	    input[type=text], input[type=password], select {
+	        display: inline-block;
+	        width: 200px;
+	    }
+	    input[type=radio] {
+	        margin-left: 45px;
+	    }
+	    input[type=checkbox] {
+	        margin-right: 190px;
+	    }  
+	    button {
+	        padding: 5px;
+	        margin: 10px;
+	    }
+	</style>
+	<title> Edit Branch </title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<script src="/assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+</head>
+ 
+<body>
+<div class="view">
+	  <!-- Mask & flexbox options-->
+            <div class="mask rgba-gradient align-items-center">
+              <!-- Content -->
+              <div class="container">
+                <!--Grid row-->
+                <div class="row mt-5">
+                  <!--Grid column-->
+	<div align="center">
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-4">Edit Branch</h1>
+		</div>
+	</div>
+	<form action="#" 
+	  th:action="@{/branch/update/{id}(id=${branch.id})}" 
+	   
+	  method="post">
+		
+		<label class="label label-info" for="first_name">Branch name</label>
+	    <input class="form-control" type="text" th:value="${branch.name}" name="name" id="branch.name" placeholder="Branch name">
+	    <span th:if="${#fields.hasErrors('branch.name')}" th:errors="*{branch.name}"></span>
+	    <br>
+	    
+	    <label for="phoneNumber">Phone Number</label>
+	    <input class="form-control" type="text" th:value="${branch.phoneNumber}" name="phoneNumber" id="branch.phoneNumber" placeholder="phoneNumber">
+	    <span th:if="${#fields.hasErrors('branch.phoneNumber')}" th:errors="*{branch.phoneNumber}"></span>
+		<br>
+		
+	
+		
+		<label for="email">email</label>
+	    <input class="form-control" type="text" th:value="${branch.email}" name="email" id="cus.email" placeholder="email">
+	    <span th:if="${#fields.hasErrors('branch.email')}" th:errors="*{branch.email}"></span>
+		<br>
+		
+		<label for="houseNo">houseNo</label>
+	    <input class="form-control" type="text" th:value="${address.houseNo}" name="address.houseNo" id="address.houseNo" placeholder="houseNo">
+	    <span th:if="${#fields.hasErrors('address.houseNo')}" th:errors="*{address.houseNo}"></span>
+		<br>
+		
+		<label for="street">street</label>
+	    <input class="form-control" type="text" th:value="${address.street}" name="address.street" id="address.street" placeholder="street">
+	    <span th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}"></span>
+		<br>
+		
+		<label for="alley">alley</label>
+	    <input class="form-control" type="text" th:value="${address.alley}" name="address.alley" id="address.alley" placeholder="alley">
+	    <span th:if="${#fields.hasErrors('address.alley')}" th:errors="*{address.alley}"></span>
+		<br>
+		
+		<label for="villageNo">villageNo</label>
+	    <input class="form-control" type="text" th:value="${address.villageNo}" name="address.villageNo" id="address.villageNo" placeholder="villageNo">
+	    <span th:if="${#fields.hasErrors('address.villageNo')}" th:errors="*{address.villageNo}"></span>
+		<br>
+		
+		<label for="subDistrict">subDistrict</label>
+	    <input class="form-control" type="text" th:value="${address.subDistrict}" name="address.subDistrict" id="address.subDistrict" placeholder="subDistrict">
+	    <span th:if="${#fields.hasErrors('address.subDistrict')}" th:errors="*{address.subDistrict}"></span>
+		<br>
+		
+		<label for="province">province</label>
+	    <input class="form-control" type="text" th:value="${address.province}" name="address.province" id="address.province" placeholder="province">
+	    <span th:if="${#fields.hasErrors('address.province')}" th:errors="*{address.province}"></span>
+		<br>
+		
+		<label for="postalCode">postalCode</label>
+	    <input class="form-control" type="text" th:value="${address.postalCode}" name="address.postalCode" id="address.postalCode" placeholder="postalCode">
+	    <span th:if="${#fields.hasErrors('address.postalCode')}" th:errors="*{address.postalCode}"></span>
+		<br>
+		
+		
+	    <!-- <input type="submit" value="Update User"> -->
+		<button type="submit" class="btn btn-info text-white mt-2">Update Branch</button>
+	</form>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+   </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>  
+	<style type="text/css">
+	    label {
+	        display: inline-block;
+	        width: 200px;
+	        margin: 5px;
+	        text-align: left;
+	    }
+	    input[type=text], input[type=password], select {
+	        display: inline-block;
+	        width: 200px;
+	    }
+	    input[type=radio] {
+	        margin-left: 45px;
+	    }
+	    input[type=checkbox] {
+	        margin-right: 190px;
+	    }  
+	    button {
+	        padding: 5px;
+	        margin: 10px;
+	    }
+	</style>
+	<title> Edit Branch </title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<script src="/assets/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+</head>
+ 
+<body>
+<div class="view">
+	  <!-- Mask & flexbox options-->
+            <div class="mask rgba-gradient align-items-center">
+              <!-- Content -->
+              <div class="container">
+                <!--Grid row-->
+                <div class="row mt-5">
+                  <!--Grid column-->
+	<div align="center">
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<h1 class="display-4"></h1>
+		</div>
+	</div>
+	
+		
+	<div class="view">
+	   <div align="center">
+	      <h1> Add Employee </h1>
+	      <div class="container">
+	         <div class="row">
+	            <div class="col-lg-10 mt-5 mb-5">
+	               <table id="example" class="table table-bordered" style="width: 100%">
+	                  <!--- This is a comment !-->
+	                  <thead class="table-dark"  >
+	                     <tr>
+	                        <th scope="col">Employee Id</th>
+	                        <th scope="col">Employee name</th>
+	                        <th scope="col">Employee lastname</th>
+	                        <th scope="col">Add</th>
+	                     </tr>
+	                  </thead>
+	                  <tbody>
+	                     <tr scope="row", th:each="employee : ${employees}">
+	                        <td   th:text="${employee.id}"></td>
+	                        <td   th:text="${employee.firstName}"></td>
+	                        <td   th:text="${employee.lastName}"></td>
+	                        <td><a th:href="@{/branch/add_employee/{branch_id}/{employee_id}(branch_id=${branch.id}, employee_id=${employee.id})}">  <button class="btn btn-info text-white" type="submit">Add</button></a></td>
+
+	                     </tr>
+	                  </tbody>
+	               </table>
+	            </div>
+	         </div>
+	      </div>
+	      
+	   </div>
+	</div> 
+	
+	
+	
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+   </body>
+</html>
